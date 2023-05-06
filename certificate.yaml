@@ -1,0 +1,37 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: vip-demo-cert
+  namespace: default
+spec:
+  secretName: vip-demo-cert
+  issuerRef:
+    name: vip-demo-issuer
+    kind: ClusterIssuer
+  commonName: vip.protonchain.com
+  dnsNames:
+  - vip.protonchain.com
+  acme:
+    config:
+    - http01:
+        ingress: vip-demo-ssl-ingress
+      domains:
+      - vip.protonchain.com
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: vip-demo-issuer
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: cindy@metalpay.co
+    privateKeySecretRef:
+      name:  vip-demo-cert
+    http01: {}
+    solvers:
+      - selector: {}
+        http01:
+          ingress:
+            class: nginx
+  

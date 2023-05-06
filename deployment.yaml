@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vip-demo
+  labels:
+    app: vip-demo
+spec:
+  selector:
+    matchLabels:
+      app: vip-demo
+  template:
+    metadata:
+      labels:
+        app: vip-demo
+        tier: web
+    spec:
+      containers:
+      - name: vip-demo
+        image: gcr.io/proton-wallet/proton-vip-demo@sha256:8175a74f592908ae1924a0ec93e58a0ca87f4b7fbf8e1d325a6132d188affa6d
+        ports:
+        - containerPort: 3000

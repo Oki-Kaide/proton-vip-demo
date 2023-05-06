@@ -1,0 +1,31 @@
+@import '../../node_modules/bulma/bulma.sass';
+
+@font-face {
+  font-family: CircularStd-bold;
+  src: url('/fonts/CircularStd-Bold.ttf');
+}
+
+@font-face {
+  font-family: CircularStd;
+  src: url('/fonts/CircularStd-Medium.ttf');
+}
+
+@font-face {
+  font-family: CircularStd-Book;
+  src: url('/fonts/CircularStd-Book.ttf');
+}
+
+* {
+  z-index: 1;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.slide {
+  background: transparent !important;
+  margin-top: 32px !important;
+  text-align: left !important;
+}
